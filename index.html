@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pacifico&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <title>Casa del libro</title>
+  </head>
+  <body>
+    <header>
+      <nav class="nav-bar-first">
+        <img class="ico-menu" src="./assets/logos/menu-bar.png" alt="icono barra de manu">
+
+        <h1 class="logo">
+          <img
+            src="./assets/logos/logo_CasaDelLibro.svg"
+            alt="logo casa del libro"
+            class="logo_CasaDelLibro"
+          />
+        </h1>
+        <search class="barra-busqueda">
+          <form action="/buscar" method="get">
+            <input
+              type="search"
+              name="search_bar"
+              placeholder="Busca por autor, título, género, ISBN"
+            />
+            <button type="submit">
+              <img src="./assets/logos/ico_lupa.svg" alt="ico_lupa" />
+            </button>
+          </form>
+        </search>
+        <a
+          class="librerias"
+          href="https://www.casadellibro.com/nosotros/nuestras-tiendas-nuestrastiendas/0"
+          ><img
+            src="./assets/logos/ico_ubicacion.svg"
+            alt="icono ubicacion liberias"
+          />Librerías</a
+        >
+        <button class="login">
+          <img src="./assets/logos/ico_usuario.svg" alt="icono user" />
+          <span>Mi Cuenta</span>
+        </button>
+        <img
+          class="cesta"
+          src="./assets/logos/ico_cesta.svg"
+          alt="icono cesta"
+        />
+      </nav>
+
+      <nav class="nav-bar-secondary">
+        <ul>
+          <li>
+            <a href="https://www.casadellibro.com/libros-imprescindibles"
+              >Imprescindibles</a
+            >
+          </li>
+          <li>
+            <a href="https://www.casadellibro.com/libros/literatura/121000000"
+              >Ficción</a
+            >
+          </li>
+          <li>
+            <a href="https://www.casadellibro.com/libros-no-ficcion"
+              >No Ficción</a
+            >
+          </li>
+          <li>
+            <a href="https://www.casadellibro.com/libros/infantil/117000000"
+              >Infantil</a
+            >
+          </li>
+          <li>
+            <a href="https://www.casadellibro.com/libros/juvenil/473000000"
+              >Juvenil</a
+            >
+          </li>
+          <li>
+            <a href="https://www.casadellibro.com/libros/comics/411000000"
+              >Comics y Manga</a
+            >
+          </li>
+          <li>
+            <a href="https://www.casadellibro.com/libros-en-ingles"
+              >English Books</a
+            >
+          </li>
+          <li>
+            <a href="https://www.casadellibro.com/papeleria">Papelería</a>
+          </li>
+          <li><a href="https://www.casadellibro.com/ebooks">Ebooks</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="banner-promo">
+        <img
+          src="./assets/navidad-largo.gif"
+          alt="gift promo navidad"
+        />
+        <article class="promo">
+          <div>
+          <h2>Todavía estás a tiempo</h2>
+          <p>Hoy envío gratis sin pedido mínimo y 5% en libros e eBooks*.</p>
+        </div>
+          <button>ver regalos</button>
+        </article>
+      </section>
+
+      <section class="banner-news">
+        <ul>
+          <li>
+            <article>
+              <a
+                href="https://www.youtube.com/embed/SE-obcW06ss?si=QAD8Gty96A_ybMag"
+                ><img
+                  src="./assets/banner news/NAVIDAD_21.11.24_370X200.webp"
+                  alt="enlace a video de navidad"
+              /></a>
+              <h2>Conoce a Truman en nuestro video de Navidad</h2>
+              <button>ver video</button>
+            </article>
+          </li>
+          <li>
+            <article>
+              <img
+                src="./assets/banner news/banner chatbot truman 370x200 copia.webp"
+                alt="chatbot truman"
+              />
+              <h2>Truman te ayuda a elegir el libro perfecto</h2>
+              <button>hablar con truman por whatsapp</button>
+            </article>
+          </li>
+          <li>
+            <article>
+              <img
+                src="./assets/banner news/SOCIO_370X200_27.11.24.webp"
+                alt="hazte socio"
+              />
+              <h2>Hazte Socio en un minuto y gratis</h2>
+              <button class="btn-especial">hacerme socio</button>
+            </article>
+          </li>
+        </ul>
+      </section>
+
+      <section class="recomendaciones">
+        <h2>Recomendados</h2>
+        <ul>
+          <li>
+            <article>
+              <img
+                src="./assets/section recomendations/banner-Navidad-CDL-180x250.webp"
+                alt="regala libros"
+              />
+              <h2>Regala libros, comparte recuerdos</h2>
+              <!-- usando un anchor como boton -->
+              <a
+                class="search-button-recomendaciones"
+                href="https://www.casadellibro.com/escaparate-grupo-planeta"
+                target="_blank
+              "
+                >VER MAS</a
+              >
+            </article>
+          </li>
+          <li>
+            <article>
+              <img
+                src="./assets/section recomendations/9788491297086.webp"
+                alt="portada libro el faro de la sirena"
+              />
+              <h2>Una familia. Un terrible secreto</h2>
+              <button>ver libro</button>
+            </article>
+          </li>
+          <li>
+            <article>
+              <img
+                src="./assets/section recomendations/arte_ocultowebp.webp"
+                alt="portada libro arte de lo oculto "
+              />
+              <h2>El arte de lo oculto</h2>
+              <button>ver libro</button>
+            </article>
+          </li>
+          <li>
+            <article>
+              <img
+                src="./assets/section recomendations/amarillawebp.webp"
+                alt="portada libro amarilla"
+              />
+              <h2>Amarilla</h2>
+              <button>ver libro</button>
+            </article>
+          </li>
+          <li>
+            <article>
+              <img
+                src="./assets/section recomendations/cocina_japonesa.webp"
+                alt="portada libro cocina japonesa"
+              />
+              <h2>Cocina japonesa</h2>
+              <button>ver libro</button>
+            </article>
+          </li>
+          <li>
+            <article>
+              <img
+                src="./assets/section recomendations/fiesta_a_medianoche.webp"
+                alt="portada libro fiesta a medianoche"
+              />
+              <h2>Fiesta a medianoche</h2>
+              <button>ver libro</button>
+            </article>
+          </li>
+          <li>
+            <article>
+              <img
+                src="./assets/section recomendations/the_odoros.webp"
+                alt="portada libro the odoros"
+              />
+              <h2>The odoros</h2>
+              <button>ver libro</button>
+            </article>
+          </li>
+          <li>
+            <article>
+              <img
+                src="./assets/section recomendations/arte.webp"
+                alt="portada libro arte"
+              />
+              <h2>Arte</h2>
+              <button>ver libro</button>
+            </article>
+          </li>
+        </ul>
+      </section>
+      
+      <section class="best-sellers">
+        <h2>Más vendidos</h2>
+        <ul>
+          <li>
+            <article>
+              <img
+              src="./assets/section best sellers/alas_de_onix.webp"
+              alt="libro alas de onix"/>  
+              <p class="tipo-tapa-libro">Tapa dura</p>
+              <h2 class="titulo-libro">ALAS DE ÓNIX (EMPÍREO 3)</h2>
+              <p class="autor">Rebecca Yarros</p>
+              <p class="precio">22,70&euro;</p>
+              <p class="envio">¡envio gratis!</p>
+              <button class="ver-ficha">ver ficha</button>
+              <button class="añadir">añadir</button>
+            </article>
+          </li>
+          <li>
+            <article>
+              <img
+              src="./assets/section best sellers/el_clan.webp"
+              alt="libro el clan" />
+              <p class="tipo-tapa-libro">Tapa blanda</p>
+              <h2 class="titulo-libro">EL CLAN (INSPECTORA ELENA BLANCO 5)</h2>
+              <p class="autor">Carmen Mola</p>
+              <p class="precio">20,80&euro;</p>
+              <p class="envio">envio gratis</p>
+              <button class="ver-ficha">ver ficha</button>
+              <button class="añadir">añadir</button>
+          </article>
+          </li>
+          <li>
+            <article>
+              <img
+              src="./assets/section best sellers/el_niño_que_perdio_la_guerra.webp"
+              alt="libro el niño que perdio la guerra"/>
+              <p class="tipo-tapa-libro">Tapa dura</p>
+              <h2 class="titulo-libro">EL NIÑO QUE PERDIÓ LA GUERRA</h2>
+              <p class="autor">Julia Navarro</p>
+              <p class="precio">15,80&euro;</p>
+              <p class="envio">envio gratis</p>
+              <button class="ver-ficha">ver ficha</button>
+              <button class="añadir">añadir</button>
+          </article>
+          </li>
+          <li>
+            <article>
+              <img
+              src="./assets/section best sellers/la_asistenta.webp"
+              alt="libro LA ASISTENTA"/>
+              <p class="tipo-tapa-libro">Tapa dura</p>
+              <h2 class="titulo-libro">LA ASISTENTA</h2>
+              <p class="autor">Freida McFadden</p>
+              <p class="precio">10,80&euro;</p>
+              <p class="envio">envio gratis</p>
+              <button class="ver-ficha">ver ficha</button>
+              <button class="añadir">añadir</button>
+          </article>
+          </li>
+          <li>
+            <article>
+              <img
+              src="./assets/section best sellers/la_isla_de_la_mujer_dormida.webp"
+              alt="libro LA ISLA DE LA MUJER DORMIDA"/>
+              <p class="tipo-tapa-libro">Tapa dura</p>
+              <h2 class="titulo-libro">LA ISLA DE LA MUJER DORMIDA</h2>
+              <p class="autor">Arturo Pérez-Reverte</p>
+              <p class="precio">10,80&euro;</p>
+              <p class="envio">envio gratis</p>
+              <button class="ver-ficha">ver ficha</button>
+              <button class="añadir">añadir</button>
+          </article>
+          </li>
+          <li>
+            <article>
+              <img
+              src="./assets/section best sellers/las_que_no_duermen.webp"
+              alt="libro LAS QUE NO DUERMEN NASH"/>
+              <p class="tipo-tapa-libro">Tapa dura</p>
+              <h2 class="titulo-libro">LAS QUE NO DUERMEN NASH</h2>
+              <p class="autor">Dolores Redondo</p>
+              <p class="precio">10,80&euro;</p>
+              <p class="envio">envio gratis</p>
+              <button class="ver-ficha">ver ficha</button>
+              <button class="añadir">añadir</button>
+          </article>
+          </li>
+          <li>
+            <article>
+              <img
+              src="./assets/section best sellers/quicksilver_saga.webp"
+              alt="libro QUICKSILVER - SAGA ALQUIMIA & FAE VOL. 1"/>
+              <p class="tipo-tapa-libro">Tapa blanda</p>
+              <h2 class="titulo-libro">QUICKSILVER - SAGA ALQUIMIA & FAE VOL. 1</h2>
+              <p class="autor">Callie Hart</p>
+              <p class="precio">26,80&euro;</p>
+              <p class="envio">envio gratis</p>
+              <button class="ver-ficha">ver ficha</button>
+              <button class="añadir">añadir</button>
+          </article>
+          </li>
+          <li>
+            <article>
+              <img
+              src="./assets/section best sellers/victoria.webp"
+              alt="libro VICTORIA (PREMIO PLANETA 2024)"/>
+              <p class="tipo-tapa-libro">Tapa dura</p>
+              <h2 class="titulo-libro">VICTORIA (PREMIO PLANETA 2024)</h2>
+              <p class="autor">Paloma Sánchez-Garnica</p>
+              <p class="precio">21,80&euro;</p>
+              <p class="envio">envio gratis</p>
+              <button class="ver-ficha">ver ficha</button>
+              <button class="añadir">añadir</button>
+          </article>
+          </li>
+      </section>
+      <section class="categorias-destacadas">
+        <h2>Categorías destacadas</h2>
+        <ul>
+          <li>
+            <img src="./assets/categorias destacadas/contemporanea_c.png" alt="contemporanea">
+            <a href="#">contemporanea</a>
+          </li>
+          <li>
+            <img src="./assets/categorias destacadas/infantil_c.png" alt="infantil">
+            <a href="#">Infantil</a>
+          </li>
+          <li>
+            <img src="./assets/categorias destacadas/juvenil_c.png" alt="juvenil">
+            <a href="#">Juvenil</a>
+          </li>
+          <li>
+            <img src="./assets/categorias destacadas/MicrosoftTeams-image (73).png" alt="Autoayuda">
+            <a href="#">Autoayuda</a>
+          </li>
+          <li>
+            <img src="./assets/categorias destacadas/MicrosoftTeams-image (75).png" alt="Ciencia">
+            <a href="#">Ciencia</a>
+          </li>
+        </ul>
+        <button>ver mas temáticas</button>
+      </section>
+    </main>
+
+    <footer>
+      <section class="social-media">
+        <ul>
+          <li>
+            <a href="#" target="_blank">
+            <img src=".//assets/logos/social/facebook.svg
+            " alt="facebook"></a>
+          </li>
+          <li>
+            <a href="#" target="_blank">
+            <img src=".//assets/logos/social/instagram.svg" alt="instagram"></a>
+          </li>
+          <li>
+            <a href="#" target="_blank">
+            <img src=".//assets/logos/social/twitter.svg" alt="twitter"></a>
+          </li>
+          <li>
+            <a href="#" target="_blank">
+            <img src=".//assets/logos/social/youtube.svg" alt="youtube"></a>
+          </li>
+        </ul>
+      </section>
+      <nav class="footer-nav">
+        <section>
+          <h3>Casa del libro</h3>
+          <ul>
+            <li><a href="#">Quienes somos</a></li>
+            <li><a href="#">Trabaja con nosotros</a></li>
+            <li><a href="#">Nuestras librerías</a></li>
+            <li><a href="#">Casa del Libro México</a></li>
+          </ul>
+        </section>
+        <section>
+          <h3>Ayuda</h3>
+          <ul>
+            <li><a href="#">Pago seguro con tarjeta</a></li>
+            <li><a href="#">Pagar con Klarna</a></li>
+            <li><a href="#">Devoluciones</a></li>
+            <li><a href="#">Bono Cultural Joven</a></li>
+            <li><a href="#">Contacta con nosotros</a></li>
+          </ul>
+        </section>
+        <section>
+          <h3>Servicios</h3>
+          <ul>
+            <li><a href="#">Casa del Libro Plus</a></li>
+            <li><a href="#">Vende con nosotros</a></li>
+            <li><a href="#">Venta a Empresas e Instituciones</a></li>
+          </ul>
+        </section>
+        <section>
+          <h3>Informacion legal</h3>
+          <ul>
+            <li><a href="">Condiciones de uso</a></li>
+            <li><a href="">Condiciones de contratación</a></li>
+            <li><a href="">Condiciones para vender</a></li>
+          </ul>
+        </section>
+      </nav>
+      <p>&copy; pagina creada con fines educativos.</p>
+    </footer>
+  </body>
+</html>
