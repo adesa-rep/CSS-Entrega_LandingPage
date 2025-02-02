@@ -6,7 +6,7 @@
   --header-mobile-height: 15vh;
   --header-desktop-height: 15vh;
   /* tamaños fuentes */
-  --typo-xs: 15px;
+  --typo-xs: 16px;
   --typo-sm: 22px;
   --typo-md: clamp(1.75rem, 1.36vi + 1.41rem, 2.5rem);
   --typo-xl: clamp(1.5rem, 1.54vi + 1.12rem, 2.34rem);
@@ -24,6 +24,7 @@
   --bottom-line: 0.2px solid rgb(140, 140, 140);
   --border-red: 2px solid red;
   --border-blue: 2px solid blue;
+  --border-plum: 2px solid plum;
 }
 
 /* formateo general de estilos */
@@ -59,7 +60,7 @@ body {
   background-color: #e9ebef;
 }
 
-/* mobile first */
+/*todo mobile first */
 
 header {
   background-color: antiquewhite;
@@ -87,7 +88,6 @@ header {
 .nav-bar-first img {
   width: 2vw;
   min-width: 25px;
-  /* background-color: plum; */
 }
 
 .ico-menu {
@@ -256,6 +256,54 @@ section > h2 {
 
 /* ? recomendaciones */
 
+.recomendaciones ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-min);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: var(--space-min);
+}
+
+.recomendaciones ul > article {
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  align-items: center;
+  /* width: 300px;
+  min-width: 300px;
+  max-width: 300px; */
+  justify-content: space-between;
+}
+
+.recomendaciones div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* width: 300px;
+  min-width: 300px;
+  max-width: 300px */
+}
+
+.recomendaciones div > h2 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.recomendaciones img {
+  justify-content: center;
+  align-self: center;
+  /* aspect-ratio: 3/4; */
+  width: 100%;
+  width: 300px;
+  /* min-width: 300px;
+  max-width: 300px; */
+  height: auto;
+}
+
 a.search-button-recomendaciones {
   background-color: var(--btn-especial);
   border-radius: var(--radius);
@@ -274,6 +322,7 @@ article {
   display: flex;
   flex-direction: column;
 }
+
 .best-sellers article {
   gap: 2px;
   font-family: 'inter';
@@ -537,70 +586,83 @@ footer > p {
 
   .recomendaciones ul {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-auto-flow: column; /* Asegura el scroll horizontal */
-    grid-template-rows: 1fr;
-    gap: var(--space-min);
-    width: 90%;
-    overflow-x: scroll;
-  }
-
-  /* Evita que los elementos se reduzcan }*/
-  /* .recomendaciones ul li {
-    flex: 0 0 auto;  */
-
-  .recomendaciones ul li > article {
-    display: grid;
-    grid-template-rows: 2fr 15% 8%;
-    height: 100%;
-  }
-
-  /*? un botón dentro de una celda de un grid con 1fr en la configuración de las filas o columnas, el botón ocupa todo el alto porque, de forma predeterminada, los elementos dentro de una celda tienden a expandirse para llenar el espacio disponible. Asi que para controlar esto, se puede establecer el alto del botón (en caso de la celda fuese 1fr)*/
-  .recomendaciones button,
-  a.search-button-recomendaciones {
-    height: 100%;
-    width: 100%;
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
-    display: grid;
-    place-content: center;
-    /* align-items: center;
-    justify-content: center; */
-  }
-
-  .recomendaciones ul li article > h2 {
-    text-align: left; /*alinear texto horizontalmente */
-    font-size: var(--typo-sm);
-    height: 100%;
-  }
-
-  .recomendaciones * {
-    height: 100%;
-  }
-
-  /* ! NO SE COMO HACERLO CON UNIDADES RELATIVAS YA QUE AL USARLAS LAS ULTIMAS IMG DEL SCROLL SE REDUCEN */
-  .recomendaciones img {
-    width: 200px;
-    height: 300px;
-    object-fit: cover;
-  }
-
-  /* ? best-sellers */
-  .best-sellers ul {
-    display: grid;
     grid-template-columns: repeat(4, minmax(200px, 1fr));
+    gap: var(--space-min);
+    /* padding: var(--space-min); */
   }
 
-  .best-sellers img {
+  .recomendaciones img {
     width: 100px;
     height: 150px;
     object-fit: cover;
   }
 
-  .best-sellers ul li > article {
+  .recomendaciones ul li > article {
     flex-direction: row;
     gap: var(--space-max);
+    width: 100%; /*para que el contenedor tenga un ancho uniforme para todos los elementos*/
+  }
+
+  .recomendaciones article > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%; /*para que el contenedor tenga un ancho uniforme para todos los elementos*/
+  }
+
+  .recomendaciones div > h2 {
+    font-size: 20px;
+  }
+
+  /*? un botón dentro de una celda de un grid con 1fr en la configuración de las filas o columnas, el botón ocupa todo el alto porque, de forma predeterminada, los elementos dentro de una celda tienden a expandirse para llenar el espacio disponible. Asi que para controlar esto, se puede establecer el alto del botón (en caso de la celda fuese 1fr)*/
+
+  .recomendaciones button,
+  a.search-button-recomendaciones {
+    width: 80%;
+  }
+
+  /* ? Mas vendidos */
+
+  .best-sellers ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-flow: column; /* Asegura el scroll horizontal */
+    grid-template-rows: 1fr;
+    gap: var(--space-min);
+    width: 100%;
+    overflow-x: scroll;
+  }
+
+  /* Evita que los elementos se reduzcan }*/
+  /* .best-sellers ul li {
+      flex: 0 0 auto;  */
+
+  .best-sellers > * {
+    color: red;
+    /* height: 100%; */
+  }
+  .best-sellers ul li > article {
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: 2fr 1fr;
+    height: 100%; */
+    border: var(--border-red);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .best-sellers ul li article > h2 {
+    text-align: left; /*alinear texto horizontalmente */
+    font-size: var(--typo-sm);
+    height: 100%;
+  }
+
+  /* ! NO SE COMO HACERLO CON UNIDADES RELATIVAS YA QUE AL USARLAS LAS ULTIMAS IMG DEL SCROLL SE REDUCEN */
+  .best-sellers img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
   }
 
   .acciones {
