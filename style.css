@@ -4,8 +4,9 @@
   --space-btn: 4%;
   --radius: 8px;
   --header-mobile-height: 15vh;
-  --header-desktop-height: 15vh;
+  --header-desktop-height: 17vh;
   /* tamaños fuentes */
+  --typo-xxs: 14px;
   --typo-xs: 16px;
   --typo-sm: 22px;
   --typo-md: clamp(1.75rem, 1.36vi + 1.41rem, 2.5rem);
@@ -165,8 +166,10 @@ header {
   grid-row: 1 / 2; */
 }
 
+/* ? main */
+
 main {
-  width: 100%;
+  width: 100vw;
   margin-top: calc(
     var(--header-mobile-height) + var(--space-min)
   ); /*espacio para que sea sea visible todo el contenido del main y no quede solapado con el header*/
@@ -178,7 +181,7 @@ main {
 
 .promo {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   flex-wrap: wrap;
   background-color: black;
   color: white;
@@ -347,7 +350,7 @@ p.autor {
 
 p.precio {
   font-weight: 550;
-  font-size: var(--typo-md);
+  font-size: var(--typo-sm);
   color: var(--precio-color);
 }
 
@@ -367,6 +370,7 @@ li {
   flex-direction: column;
   align-items: center;
   /* gap: 10px; */
+  transition: transform 0.5s ease-in-out;
 }
 
 .categorias-destacadas li > img {
@@ -389,6 +393,7 @@ li {
   gap: var(--space-min);
   justify-content: space-around;
   margin: var(--space-max);
+  flex-wrap: wrap;
 }
 
 .social-media img {
@@ -415,8 +420,8 @@ li {
   text-align: center;
 }
 
-.footer-nav section > a {
-  color: gray;
+.footer-nav section a {
+  color: rgb(60, 58, 58);
   font-size: var(--typo-xs);
 }
 
@@ -426,12 +431,58 @@ footer > p {
   line-height: 2;
   text-align: center;
 }
+button {
+  transition: transform 0.3s ease-in-out;
+}
 
-@media (min-width: 900px) {
+/* ! efectos !!!! */
+button:hover {
+  /* background: rgb(168, 133, 69); */
+  background-color: orange;
+  color: white;
+  transform: scale(1.1);
+}
+
+.categorias-destacadas li:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(10px 10px 20px orange);
+  animation: subrayado 10s ease;
+}
+
+@keyframes subrayado {
+  0% {
+    text-decoration: none;
+  }
+  20% {
+    text-decoration: underline;
+    /* text-decoration-style: wavy; */
+    /* text-decoration-color: transparent; */
+  }
+  40% {
+    text-decoration-color: #ccc;
+  }
+  60% {
+    text-decoration-color: #aaa;
+  }
+  80% {
+    text-decoration-color: #888;
+  }
+  100% {
+    text-decoration-color: #000;
+  }
+}
+
+/* ! ************************************************************* */
+/* todo Desktop view*/
+
+@media (min-width: 800px) {
+  /* ? menu's */
+
   .ico-menu {
     display: none;
   }
 
+  /*? dar visibilidad al resto de iconos del header */
   .ver-ficha,
   .añadir,
   .nav-bar-secondary,
@@ -449,6 +500,8 @@ footer > p {
     padding: 0 var(--space-max);
   }
 
+  /* ? navbar's del header */
+
   .nav-bar-first {
     /* grid-template-columns: 1fr 3fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
@@ -457,7 +510,8 @@ footer > p {
   }
 
   .barra-busqueda {
-    flex: 2;
+    flex: 2 1 500px;
+    /* flex: 2; */
     border: var(--bottom-line);
   }
 
@@ -469,15 +523,14 @@ footer > p {
     flex: 1;
   }
 
-  /* 
-  si usaramos  grid en el nav-bar-first
-  .nav-bar-secondary {
-    display: flex;
-  }
-
-  .librerias {
-    grid-area: librerias;
-  } */
+  /*todo si usaramos  grid en el nav-bar-first
+      .nav-bar-secondary {
+        display: flex;
+      }
+      .librerias {
+        grid-area: librerias;
+      } 
+  */
 
   .nav-bar-secondary {
     padding: 10px 0;
@@ -488,7 +541,20 @@ footer > p {
     justify-content: space-between;
     align-items: center;
   }
+  .nav-bar-secondary ul li {
+    transition: transform 0.5s ease;
+  }
 
+  .nav-bar-secondary ul li:hover a {
+    background-color: orange;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: white;
+    /* transform: scale(1.1); */
+  }
+
+  /* ? main */
   main {
     width: 100%;
     margin-top: calc(
@@ -518,7 +584,7 @@ footer > p {
   }
 
   .promo button {
-    width: 15%;
+    width: 30%;
     padding: 15px;
     margin: 0;
   }
@@ -531,15 +597,15 @@ footer > p {
     align-items: center;
   }
 
-  /* 
-  esto es lo mismo que .banner-news * :
-  .banner-news ul,
-  .banner-news ul li,
-  .banner-news ul li > article {
-    height: 100%;
-  } */
+  /* todo:  esto es lo mismo que .banner-news * :
+    .banner-news ul,
+    .banner-news ul li,
+    .banner-news ul li > article {
+      height: 100%;
+    } 
+  */
 
-  /* todo para asegurar de que todas las celdas dentro del contenedor .banner-news tengan la misma altura, y que el contenido dentro de ellas se ajuste de manera uniforme */
+  /* todo: para asegurar de que todas las celdas dentro del contenedor .banner-news tengan la misma altura, y que el contenido dentro de ellas se ajuste de manera uniforme */
   .banner-news * {
     height: 100%;
   }
@@ -618,7 +684,10 @@ footer > p {
 
   .recomendaciones button,
   a.search-button-recomendaciones {
-    width: 80%;
+    width: 100%;
+    text-transform: lowercase;
+    letter-spacing: 2px;
+    padding: 8px;
   }
 
   /* ? Mas vendidos */
@@ -626,36 +695,115 @@ footer > p {
   .best-sellers ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-auto-flow: column; /* Asegura el scroll horizontal */
+    grid-auto-flow: column; /*! Asegura el scroll horizontal */
     grid-template-rows: 1fr;
     gap: var(--space-min);
     width: 100%;
     overflow-x: scroll;
   }
 
-  /* Evita que los elementos se reduzcan }*/
-  /* .best-sellers ul li {
-      flex: 0 0 auto;  */
+  /* todo: Evita que los elementos se reduzcan
+    .best-sellers ul li {
+        flex: 0 0 auto;
+      }
+  */
 
-  .best-sellers > * {
-    color: red;
-    /* height: 100%; */
-  }
   .best-sellers ul li > article {
     /* display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-template-rows: 2fr 1fr;
     height: 100%; */
-    border: var(--border-red);
     display: flex;
     flex-direction: column;
     height: 100%;
+    position: relative;
   }
 
-  .best-sellers ul li article > h2 {
-    text-align: left; /*alinear texto horizontalmente */
-    font-size: var(--typo-sm);
-    height: 100%;
+  .best-sellers ul li article .acciones {
+    /* display: none; */
+    width: 100%;
+    opacity: 0; /* Oculto */
+    visibility: hidden; /* Oculto */
+    /* usamos transform para bajar el elemento 10px(Esto asegura que el elemento esté invisible y abajo del contenedor, listo para ser animado al subir cuando se haga hover): */
+    transform: translateY(10px);
+    /* usamos transition para que los cambios de opacity, visibility y transform sean animados en 0.8 segundos: */
+    transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out,
+      transform 0.6s ease-in-out;
+
+    /* usamos position: absolute para sacar .acciones del flujo normal para que no ocupe espacio cuando esté oculto */
+    position: absolute; /* Lo saca del flujo normal del documento */
+    bottom: 10px; /* Lo coloca 10px arriba del borde inferior del artículo */
+    left: 0; /* Lo posiciona a la izquierda del artículo (alineamos con el borde izquierdo del articulo) */
+  }
+
+  /*todo: si hubiesemos querido centrarlo:
+      .best-sellers ul li article .acciones {
+      width: 100%;
+      opacity: 0; /* Oculto 
+      visibility: hidden; /* Oculto 
+      /* usamos transform para bajar el elemento 10px(Esto asegura que el elemento esté invisible y abajo del contenedor, listo para ser animado al subir cuando se haga hover): 
+      transform: translateY(10px);
+      /* usamos transition para que los cambios de opacity, visibility y transform sean animados en 0.8 segundos: 
+      transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out,
+        transform 0.6s ease-in-out;
+
+      /* usamos position: absolute para sacar .acciones del flujo normal para que no ocupe espacio cuando esté oculto 
+      position: absolute; /* Lo saca del flujo normal del documento 
+      bottom: 10px; /* Lo coloca 10px arriba del borde inferior del artículo 
+      !left: 50%; /* Lo posiciona en el centro del ancho del artículo (centramos dentro del article) 
+      !transform: translateX(-50%) translateY(10) 
+      ?Esto mueve el elemento hacia la izquierda un 50% de su propio ancho, centrándolo correctamente pero lo mantiene a la misma altura establecida antes con transform: translateY(10px).
+      }
+  */
+
+  /* cuando hacemos hover sobre algun articulo mostramos el div con la clase "acciones" */
+  .best-sellers ul li article:hover .acciones {
+    /* display: block; */
+    opacity: 1;
+    visibility: visible;
+    /* lo submos a su posicion posición normal, dando un efecto de deslizamiento pero manteniendolo centrado a la izquierda: */
+    transform: translateX(0px) translateY(0);
+  }
+
+  /* establecemos cómo sera la transicion para mostrar y/o ocultar los elementos con la clase "acciones"  usando las propiedades opacity y visibility*/
+  .best-sellers ul li article .precio,
+  .best-sellers ul li article .envio {
+    /* display: block; */
+    transition: opacity 0.5s ease-in-out, visibility 0.3s ease-in-out;
+  }
+
+  /* Ocultamos .precio y .envio al hacer hover */
+  .best-sellers ul li article:hover .precio,
+  .best-sellers ul li article:hover .envio {
+    /* display: none; */
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .info-libro {
+    height: 120px;
+  }
+
+  /* para que los botones del div .acciones no solapen el contenido del article, modificamos su altura al hacer hover */
+  .best-sellers ul li article:hover .info-libro {
+    height: 140px;
+  }
+
+  .best-sellers ul li article > .precio {
+    height: 20px;
+    font-size: var(--typo-xs);
+  }
+
+  .best-sellers ul li article > .envio {
+    color: green;
+    height: 30px;
+    padding: 5px 0;
+    font-size: var(--typo-xs);
+  }
+
+  .info-libro h2 {
+    text-align: left;
+    font-size: var(--typo-xs);
   }
 
   /* ! NO SE COMO HACERLO CON UNIDADES RELATIVAS YA QUE AL USARLAS LAS ULTIMAS IMG DEL SCROLL SE REDUCEN */
@@ -665,7 +813,72 @@ footer > p {
     object-fit: cover;
   }
 
-  .acciones {
-    display: none;
+  /*? categorias destacadas */
+
+  .categorias-destacadas ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-max);
+    justify-content: space-around;
+    position: relative;
+  }
+
+  .categorias-destacadas button {
+    display: inline;
+    width: auto;
+    padding: 10px;
+    margin-right: 10px;
+  }
+
+  /* ? footer */
+
+  footer {
+    background-color: rgb(210, 204, 204);
+    padding: 5px;
+    margin-top: 5vh;
+    border: 1px solid black;
+    border-radius: 10px;
+  }
+
+  /* social media */
+
+  .social-media ul {
+    justify-content: start;
+    margin: 10px;
+  }
+
+  .social-media img {
+    width: 30px;
+  }
+
+  /* nav */
+
+  .footer-nav {
+    flex-direction: row;
+    gap: var(--space-max);
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .footer-nav section > h3 {
+    font-size: var(--typo-xs);
+  }
+
+  .footer-nav section > h3:hover {
+    color: black;
+  }
+
+  .footer-nav section a {
+    font-size: var(--typo-xxs);
+  }
+
+  .footer-nav section a:hover {
+    filter: drop-shadow(5px 5px 5px rgb(255, 166, 0));
+    color: black;
+  }
+
+  footer p {
+    border-radius: 10px;
   }
 }
