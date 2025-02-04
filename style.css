@@ -48,7 +48,7 @@ a {
 
 .ver-ficha,
 .añadir,
-.nav-bar-secondary,
+/*! .nav-bar-secondary, */
 .librerias,
 .login span {
   display: none;
@@ -56,7 +56,8 @@ a {
 
 body {
   font-size: var(--typo-xs);
-  width: 100vw;
+  width: 99vw;
+  /* padding: 0.5vw; */
   min-height: 100vh;
   background-color: #e9ebef;
 }
@@ -65,7 +66,8 @@ body {
 
 header {
   background-color: antiquewhite;
-  min-width: 100vw;
+  border: 2px solid black;
+  width: 100vw;
   position: fixed;
   top: 0;
   left: 0;
@@ -169,7 +171,7 @@ header {
 /* ? main */
 
 main {
-  width: 100vw;
+  width: 99vw;
   margin-top: calc(
     var(--header-mobile-height) + var(--space-min)
   ); /*espacio para que sea sea visible todo el contenido del main y no quede solapado con el header*/
@@ -388,6 +390,10 @@ li {
 
 /*? social-media */
 
+footer {
+  width: 99%;
+}
+
 .social-media ul {
   display: flex;
   gap: var(--space-min);
@@ -430,6 +436,7 @@ footer > p {
   color: white;
   line-height: 2;
   text-align: center;
+  width: 100%;
 }
 button {
   transition: transform 0.3s ease-in-out;
@@ -443,34 +450,57 @@ button:hover {
   transform: scale(1.1);
 }
 
-.categorias-destacadas li:hover {
+.categorias-destacadas li:hover,
+.categorias-destacadas li:hover a {
   transform: scale(1.1);
   filter: drop-shadow(10px 10px 20px orange);
-  animation: subrayado 10s ease;
+  text-decoration: underline;
+  color: black;
 }
 
-@keyframes subrayado {
-  0% {
-    text-decoration: none;
-  }
-  20% {
-    text-decoration: underline;
-    /* text-decoration-style: wavy; */
-    /* text-decoration-color: transparent; */
-  }
-  40% {
-    text-decoration-color: #ccc;
-  }
-  60% {
-    text-decoration-color: #aaa;
-  }
-  80% {
-    text-decoration-color: #888;
-  }
-  100% {
-    text-decoration-color: #000;
-  }
+/* ! menu desplegable al hacer hover en .ico-menu */
+/* en este caso queremos que el menu se superponga al contenido y ocupe el 100vw, es decir, no necesitamos ningun desplazamiento  */
+
+/* contenedor respecto al que vamos a situar el menu */
+header .nav-bar-first .ico-menu {
+  position: relative; /**/
+  border: 2px solid black;
 }
+
+header .nav-bar-secondary {
+  position: absolute; /*para sacar del flujo del documento y ubicar el elemento respecto al .ico-menu*/
+  left: 0; /*lo ubicamos en el borde izquierdo del .ico-menu*/
+  top: 60px; /*lo ubicamos justo por debajo del .ico-menu*/
+  width: 100vw; /*queremos que el menu ocupe el 100% de la pantalla*/
+
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%);
+}
+
+/* ordenamos los elementos del menu */
+header .nav-bar-secondary ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  align-items: flex-start;
+  background-color: antiquewhite;
+  width: 100%;
+}
+
+header:has(.ico-menu:hover) .nav-bar-secondary {
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(0);
+}
+/* !explicacion de header:has(.ico-menu:hover) .nav-bar-secondary
+    ?header:has(.ico-menu:hover)
+      * header es el elemento sobre el que aplicamos el :has().
+      * :has(.ico-menu:hover) selecciona el header si dentro de él hay un .ico-menu que está en estado hover.
+
+    ?.nav-bar-secondary
+      * Luego, aplicamos estilos a .nav-bar-secondary dentro del header que cumple la condición anterior.
+      * En otras palabras: si el usuario pasa el cursor sobre .ico-menu, el menú desplegable (.nav-bar-secondary) cambiará su estado.
+*/
 
 /* ! ************************************************************* */
 /* todo Desktop view*/
@@ -485,7 +515,7 @@ button:hover {
   /*? dar visibilidad al resto de iconos del header */
   .ver-ficha,
   .añadir,
-  .nav-bar-secondary,
+  /* .nav-bar-secondary, */
   .librerias,
   .login span {
     display: block;
@@ -507,6 +537,23 @@ button:hover {
     grid-template-rows: 1fr;
     grid-template-areas: 'logo search librerias cuenta cesta'; */
     display: flex;
+  }
+
+  header .nav-bar-first .ico-menu,
+  header .nav-bar-secondary {
+    position: static;
+  }
+
+  header .nav-bar-secondary {
+    transition: none;
+    transform: none;
+  }
+
+  header .nav-bar-secondary ul {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
   }
 
   .barra-busqueda {
@@ -556,7 +603,7 @@ button:hover {
 
   /* ? main */
   main {
-    width: 100%;
+    width: 99vw;
     margin-top: calc(
       var(--header-desktop-height) + var(--space-min)
     ); /*espacio para que sea sea visible todo el contenido del main y no quede solapado con el header*/
@@ -719,12 +766,13 @@ button:hover {
     position: relative;
   }
 
+  /* ! div .acciones: mostrando botones con transition y usuando las propiedades visibility y opacity */
   .best-sellers ul li article .acciones {
     /* display: none; */
     width: 100%;
     opacity: 0; /* Oculto */
     visibility: hidden; /* Oculto */
-    /* usamos transform para bajar el elemento 10px(Esto asegura que el elemento esté invisible y abajo del contenedor, listo para ser animado al subir cuando se haga hover): */
+    /* usamos transform para bajar el elemento 10px (Esto asegura que el elemento esté invisible y abajo del contenedor, listo para ser animado al subir cuando se haga hover): */
     transform: translateY(10px);
     /* usamos transition para que los cambios de opacity, visibility y transform sean animados en 0.8 segundos: */
     transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out,
@@ -838,6 +886,7 @@ button:hover {
     margin-top: 5vh;
     border: 1px solid black;
     border-radius: 10px;
+    width: 99vw;
   }
 
   /* social media */
@@ -880,5 +929,7 @@ button:hover {
 
   footer p {
     border-radius: 10px;
+    width: 100%;
+    margin: 0;
   }
 }
