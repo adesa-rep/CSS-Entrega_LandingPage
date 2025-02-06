@@ -86,7 +86,7 @@ header {
   grid-template-areas:
     'menu logo cuenta cesta'
     'search search search search';
-  /* gap: var(--space-min); */
+  gap: 10px;
 }
 
 .nav-bar-first img {
@@ -308,7 +308,7 @@ section > h2 {
   justify-content: center;
   align-self: center;
   /* aspect-ratio: 3/4; */
-  width: 100%;
+  /* width: 100%; */
   width: 300px;
   /* min-width: 300px;
   max-width: 300px; */
@@ -512,20 +512,414 @@ header:has(.ico-menu:hover) .nav-bar-secondary {
 
 /* todo:  */
 
-@media (min-width: 799px) {
+@media (min-width: 400px) {
+  /* ? menu's */
+  /* mantenemos el menu desplegable para ver las opciones del nav-bar-secondary */
+
   /*? dar visibilidad al resto de iconos del header */
   .ver-ficha,
-   .añadir,
-   /* .nav-bar-secondary, */
-   .librerias,
-   .login span {
+  .añadir,
+  .librerias,
+  .login {
     display: block;
+  }
+
+  .login span,
+  .librerias span {
+    display: none;
+  }
+
+  header {
+    height: var(--header-desktop-height);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-max);
+    justify-content: center;
+    padding: 0 var(--space-max);
+  }
+
+  /* ? navbar's del header */
+
+  .nav-bar-first {
+    /* grid-template-columns: 1fr 3fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 'logo search librerias cuenta cesta'; */
+    display: flex;
+    gap: var(--space-min);
+  }
+
+  .barra-busqueda {
+    flex: 2 1 500px;
+    /* flex: 2; */
+    border: var(--bottom-line);
+  }
+
+  .barra-busqueda form {
+    padding: 0;
+  }
+
+  .logo .librerias .login .cesta {
+    flex: 1;
+  }
+
+  /*todo si usaramos  grid en el nav-bar-first
+      .nav-bar-secondary {
+        display: flex;
+      }
+      .librerias {
+        grid-area: librerias;
+      } 
+  */
+
+  /* ? main */
+  main {
+    width: 99vw;
+    margin-top: calc(
+      var(--header-desktop-height) + var(--space-min)
+    ); /*espacio para que sea sea visible todo el contenido del main y no quede solapado con el header*/
+    padding: 0 var(--space-max);
+  }
+
+  /* ? .banner-promo */
+
+  .banner-promo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .promo {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-min);
+  }
+
+  .promo > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .promo button {
+    width: clamp(15%, 22%, 30%);
+    padding: 10px;
+    margin: 0;
+    font-size: var(--typo-xxs);
+  }
+
+  /* ? banner-news */
+
+  .banner-news ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+  }
+
+  /* todo:  esto es lo mismo que .banner-news * :
+    .banner-news ul,
+    .banner-news ul li,
+    .banner-news ul li > article {
+      height: 100%;
+    } 
+  */
+
+  /* todo: para asegurar de que todas las celdas dentro del contenedor .banner-news tengan la misma altura, y que el contenido dentro de ellas se ajuste de manera uniforme */
+  .banner-news * {
+    height: 100%;
+  }
+
+  .banner-news ul li > article {
+    display: grid;
+    grid-template-rows: 2fr 1fr 1fr;
+    padding: var(--space-max) 0;
+  }
+
+  .banner-news h2 {
+    font-size: var(--typo-xs);
+    /* para que todos tengan la misma altura y no se sobredimensionen */
+    min-height: 50px;
+    max-height: 150px;
+    align-content: center; /*para centrar el contenido verticalmente*/
+  }
+
+  .banner-news button {
+    font-size: 10px;
+  }
+
+  .banner-news h2,
+  .banner-news button {
+    padding: var(--space-min);
+  }
+
+  .banner-news img {
+    width: 100%;
+    object-fit: cover; /* Asegura que la imagen no se deforme */
+  }
+
+  .banner-news button {
+    width: 100%;
+    /* para que todos tengan la misma altura y no se sobredimensionen */
+    min-height: 40px;
+    max-height: 50px;
+  }
+
+  /* .banner-news ul li:nth-of-type(1) article {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .banner-news ul li:nth-of-type(2) article {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .banner-news ul li:nth-of-type(3) article {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+  } */
+
+  /* ? recomendaciones */
+
+  .recomendaciones ul {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    gap: var(--space-min);
+    /* padding: var(--space-min); */
+  }
+
+  .recomendaciones img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .recomendaciones ul li > article {
+    flex-direction: row;
+    gap: var(--space-max);
+    width: 100%; /*para que el contenedor tenga un ancho uniforme para todos los elementos*/
+  }
+
+  .recomendaciones article > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%; /*para que el contenedor tenga un ancho uniforme para todos los elementos*/
+  }
+
+  .recomendaciones div > h2 {
+    font-size: 20px;
+  }
+
+  /*? un botón dentro de una celda de un grid con 1fr en la configuración de las filas o columnas, el botón ocupa todo el alto porque, de forma predeterminada, los elementos dentro de una celda tienden a expandirse para llenar el espacio disponible. Asi que para controlar esto, se puede establecer el alto del botón (en caso de la celda fuese 1fr)*/
+
+  .recomendaciones button,
+  a.search-button-recomendaciones {
+    width: 100%;
+    text-transform: lowercase;
+    letter-spacing: 2px;
+    padding: 8px;
+  }
+
+  /* ? Mas vendidos */
+
+  .best-sellers ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-flow: column; /*! Asegura el scroll horizontal */
+    grid-template-rows: 1fr;
+    gap: var(--space-min);
+    width: 100%;
+    overflow-x: scroll;
+  }
+
+  /* todo: Evita que los elementos se reduzcan
+    .best-sellers ul li {
+        flex: 0 0 auto;
+      }
+  */
+
+  .best-sellers ul li > article {
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: 2fr 1fr;
+    height: 100%; */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+  }
+
+  /* ! div .acciones: mostrando botones con transition y usuando las propiedades visibility y opacity */
+  .best-sellers ul li article .acciones {
+    /* display: none; */
+    width: 100%;
+    opacity: 0; /* Oculto */
+    visibility: hidden; /* Oculto */
+    /* usamos transform para bajar el elemento 10px (Esto asegura que el elemento esté invisible y abajo del contenedor, listo para ser animado al subir cuando se haga hover): */
+    transform: translateY(10px);
+    /* usamos transition para que los cambios de opacity, visibility y transform sean animados en 0.8 segundos: */
+    transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out,
+      transform 0.6s ease-in-out;
+
+    /* usamos position: absolute para sacar .acciones del flujo normal para que no ocupe espacio cuando esté oculto */
+    position: absolute; /* Lo saca del flujo normal del documento */
+    bottom: 10px; /* Lo coloca 10px arriba del borde inferior del artículo */
+    left: 0; /* Lo posiciona a la izquierda del artículo (alineamos con el borde izquierdo del articulo) */
+  }
+
+  /*todo: si hubiesemos querido centrarlo:
+      .best-sellers ul li article .acciones {
+      width: 100%;
+      opacity: 0; /* Oculto 
+      visibility: hidden; /* Oculto 
+      /* usamos transform para bajar el elemento 10px(Esto asegura que el elemento esté invisible y abajo del contenedor, listo para ser animado al subir cuando se haga hover): 
+      transform: translateY(10px);
+      /* usamos transition para que los cambios de opacity, visibility y transform sean animados en 0.8 segundos: 
+      transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out,
+        transform 0.6s ease-in-out;
+
+      /* usamos position: absolute para sacar .acciones del flujo normal para que no ocupe espacio cuando esté oculto 
+      position: absolute; /* Lo saca del flujo normal del documento 
+      bottom: 10px; /* Lo coloca 10px arriba del borde inferior del artículo 
+      !left: 50%; /* Lo posiciona en el centro del ancho del artículo (centramos dentro del article) 
+      !transform: translateX(-50%) translateY(10) 
+      ?Esto mueve el elemento hacia la izquierda un 50% de su propio ancho, centrándolo correctamente pero lo mantiene a la misma altura establecida antes con transform: translateY(10px).
+      }
+  */
+
+  /* cuando hacemos hover sobre algun articulo mostramos el div con la clase "acciones" */
+  .best-sellers ul li article:hover .acciones {
+    /* display: block; */
+    opacity: 1;
+    visibility: visible;
+    /* lo submos a su posicion posición normal, dando un efecto de deslizamiento pero manteniendolo centrado a la izquierda: */
+    transform: translateX(0px) translateY(0);
+  }
+
+  /* establecemos cómo sera la transicion para mostrar y/o ocultar los elementos con la clase "acciones"  usando las propiedades opacity y visibility*/
+  .best-sellers ul li article .precio,
+  .best-sellers ul li article .envio {
+    /* display: block; */
+    transition: opacity 0.5s ease-in-out, visibility 0.3s ease-in-out;
+  }
+
+  /* Ocultamos .precio y .envio al hacer hover */
+  .best-sellers ul li article:hover .precio,
+  .best-sellers ul li article:hover .envio {
+    /* display: none; */
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .info-libro {
+    height: 120px;
+  }
+
+  /* para que los botones del div .acciones no solapen el contenido del article, modificamos su altura al hacer hover */
+  .best-sellers ul li article:hover .info-libro {
+    height: 140px;
+  }
+
+  .best-sellers ul li article > .precio {
+    height: 20px;
+    font-size: var(--typo-xs);
+  }
+
+  .best-sellers ul li article > .envio {
+    color: green;
+    height: 30px;
+    padding: 5px 0;
+    font-size: var(--typo-xs);
+  }
+
+  .info-libro h2 {
+    text-align: left;
+    font-size: var(--typo-xs);
+  }
+
+  /* ! NO SE COMO HACERLO CON UNIDADES RELATIVAS YA QUE AL USARLAS LAS ULTIMAS IMG DEL SCROLL SE REDUCEN */
+  .best-sellers img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  /*? categorias destacadas */
+
+  .categorias-destacadas ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-max);
+    justify-content: space-around;
+    position: relative;
+  }
+
+  .categorias-destacadas button {
+    display: inline;
+    width: auto;
+    padding: 10px;
+    margin-right: 10px;
+  }
+
+  /* ? footer */
+
+  footer {
+    background-color: rgb(210, 204, 204);
+    padding: 5px;
+    margin-top: 5vh;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 99vw;
+  }
+
+  /* social media */
+
+  .social-media ul {
+    justify-content: start;
+    margin: 10px;
+  }
+
+  .social-media img {
+    width: 30px;
+  }
+
+  /* nav */
+
+  .footer-nav {
+    flex-direction: row;
+    gap: var(--space-max);
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .footer-nav section > h3 {
+    font-size: var(--typo-xs);
+  }
+
+  .footer-nav section > h3:hover {
+    color: black;
+  }
+
+  .footer-nav section a {
+    font-size: var(--typo-xxs);
+  }
+
+  .footer-nav section a:hover {
+    filter: drop-shadow(5px 5px 5px rgb(255, 166, 0));
+    color: black;
+  }
+
+  footer p {
+    border-radius: 10px;
+    width: 100%;
+    margin: 0;
   }
 }
 
 /* todo Desktop view*/
 
-@media (min-width: 799px) {
+@media (min-width: 900px) {
   /* ? menu's */
 
   .ico-menu {
