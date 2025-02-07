@@ -4,7 +4,7 @@
   --space-btn: 4%;
   --radius: 8px;
   --header-mobile-height: 16vh;
-  --header-desktop-height: 17vh;
+  --header-desktop-height: 14vh;
   /* tamaños fuentes */
   --typo-xxs: 14px;
   --typo-xs: 16px;
@@ -282,8 +282,8 @@ section > h2 {
   /* flex-wrap: wrap; */
   flex-direction: column;
   align-items: center;
-  /* width: 300px;
-  min-width: 300px;
+  width: 300px;
+  /*min-width: 300px;
   max-width: 300px; */
   justify-content: space-between;
 }
@@ -469,14 +469,15 @@ button:hover {
 
 /* contenedor respecto al que vamos a situar el menu */
 header .nav-bar-first .ico-menu {
-  position: relative; /**/
+  position: relative;
   border: 2px solid black;
 }
 
 header .nav-bar-secondary {
-  position: absolute; /*para sacar del flujo del documento y ubicar el elemento respecto al .ico-menu*/
+  position: absolute;
+  /*para sacar del flujo del documento y ubicar el elemento respecto al .ico-menu*/
   left: 0; /*lo ubicamos en el borde izquierdo del .ico-menu*/
-  top: 60px; /*lo ubicamos justo por debajo del .ico-menu*/
+  top: 50px; /*lo ubicamos justo por debajo del .ico-menu*/
   width: 100vw; /*queremos que el menu ocupe el 100% de la pantalla*/
 
   transition: transform 0.3s ease-in-out;
@@ -530,7 +531,7 @@ header:has(.ico-menu:hover) .nav-bar-secondary {
   }
 
   header {
-    height: var(--header-desktop-height);
+    height: var(--header-mobile-height);
     display: flex;
     flex-direction: column;
     gap: var(--space-max);
@@ -611,8 +612,10 @@ header:has(.ico-menu:hover) .nav-bar-secondary {
 
   .banner-news ul {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, 1fr);
     align-items: center;
+
+    border: var(--border-blue);
   }
 
   /* todo:  esto es lo mismo que .banner-news * :
@@ -680,23 +683,41 @@ header:has(.ico-menu:hover) .nav-bar-secondary {
 
   /* ? recomendaciones */
 
+  .recomendaciones {
+    border: var(--border-red);
+  }
+
   .recomendaciones ul {
     display: grid;
-    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    /* usamos  autofit para que de forma automatica genere las columnas justas segun la cantidad de items */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: repeat(autofit, minmax(400px, 1fr));
     gap: var(--space-min);
-    /* padding: var(--space-min); */
+
+    /* height: 99%; */
+    padding: 2%;
+    margin: auto 0;
+
+    border: var(--border-blue);
   }
 
   .recomendaciones img {
-    width: 100px;
-    height: 150px;
+    /* min-width: 100px;
+    max-width: 200px; */
+    width: 100%;
+    height: 100%;
     object-fit: cover;
   }
 
   .recomendaciones ul li > article {
     flex-direction: row;
-    gap: var(--space-max);
-    width: 100%; /*para que el contenedor tenga un ancho uniforme para todos los elementos*/
+    gap: var(--space-min);
+    /*para que el contenedor tenga un ancho y alto uniforme para todos los elementos*/
+    width: 100%;
+    height: 100%;
+
+    border: var(--border-plum);
+    /* margin: auto 0; */
   }
 
   .recomendaciones article > div {
@@ -706,8 +727,8 @@ header:has(.ico-menu:hover) .nav-bar-secondary {
     width: 100%; /*para que el contenedor tenga un ancho uniforme para todos los elementos*/
   }
 
-  .recomendaciones div > h2 {
-    font-size: 20px;
+  .recomendaciones ul li article div > h2 {
+    font-size: var(--typo-xs);
   }
 
   /*? un botón dentro de una celda de un grid con 1fr en la configuración de las filas o columnas, el botón ocupa todo el alto porque, de forma predeterminada, los elementos dentro de una celda tienden a expandirse para llenar el espacio disponible. Asi que para controlar esto, se puede establecer el alto del botón (en caso de la celda fuese 1fr)*/
