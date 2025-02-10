@@ -23,6 +23,7 @@
   --envio-color: #51c531;
   --precio-color: #b71c1c;
   --bottom-line: 0.2px solid rgb(140, 140, 140);
+  /* para pruebas */
   --border-red: 2px solid red;
   --border-blue: 2px solid blue;
   --border-plum: 2px solid plum;
@@ -305,6 +306,7 @@ section > h2 {
 .recomendaciones ul li article div {
   display: flex;
   flex-direction: column;
+  gap: 10px;
   justify-content: center;
   align-items: center;
   /* width: 300px;
@@ -417,7 +419,7 @@ li {
 /*? social-media */
 
 footer {
-  width: 99%;
+  width: 100vw;
 }
 
 .social-media ul {
@@ -533,7 +535,7 @@ header .nav-bar-secondary ul li a {
   justify-content: center;
   margin: auto;
   /*damos una altura fija a los anchor para que al hacer hover y agregar un padding no cambie tamaño del header (noo de saltos)*/
-  width: 150px;
+  width: 140px;
   height: 20px;
   transition: all 0.4s ease-in-out;
 }
@@ -611,7 +613,7 @@ header .nav-bar-secondary ul li a {
 
   /* ? main */
   main {
-    width: 100vw;
+    width: 98vw;
     /*espacio para que sea sea visible todo el contenido del main y no quede solapado con el header*/
     margin-top: 60px;
     padding: 0 10px;
@@ -622,6 +624,7 @@ header .nav-bar-secondary ul li a {
   .banner-promo {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 
   .promo {
@@ -646,10 +649,13 @@ header .nav-bar-secondary ul li a {
 
   /* ? banner-news */
 
+  .banner-news {
+    width: 100%;
+  }
+
   /* ! ------- para corregir el problema de elementos desalineados/desordenados dentro del grid del ul ---- POR QUE??*/
   .banner-news * {
     height: 100%;
-    /* border: var(--border-blue); */
   }
 
   /* todo:  esto es lo mismo que .banner-news * :
@@ -662,11 +668,16 @@ header .nav-bar-secondary ul li a {
 
   .banner-news ul {
     display: grid;
-    /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     align-items: center;
+    padding: 0px;
     padding-top: 10px; /* para separar de la seccion anterior */
+    gap: 10px;
+
+    border: var(--border-blue);
+    justify-content: center;
   }
+
   /* ! -------- usamos grid-template-rows: 2fr 0fr 0fr; para corregir el sobredimensionamiento de altura en la grilla del article. ---- POR QUE?? */
   .banner-news ul li > article {
     display: grid;
@@ -674,6 +685,7 @@ header .nav-bar-secondary ul li a {
     /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
     padding: 0px;
     gap: 10px;
+    border: none; /*para quitar el border-botton establecido en .banner-news ul li > *  */
   }
 
   .banner-news ul li article > h2 {
@@ -694,22 +706,18 @@ header .nav-bar-secondary ul li a {
     width: 100%;
   }
 
-  /* ! --------corregir  */
   .banner-news ul li article img,
   banner-news ul li article a img {
-    /* width: 100%; */
-    object-fit: contain;
-    /* object-fit: cover; */
-    /* height: 150px; */
+    width: 400px;
+    height: 260px;
   }
-  /* ! ---------- */
 
   /* ? recomendaciones */
 
   .recomendaciones ul {
     display: grid;
     /* usamos  autofit para que de forma automatica genere las columnas justas segun la cantidad de items */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
     gap: 10px;
   }
 
@@ -722,23 +730,29 @@ header .nav-bar-secondary ul li a {
 
   .recomendaciones ul li > article {
     flex-direction: row;
-    gap: var(--space-min);
-    /*para que el contenedor tenga un ancho y alto uniforme para todos los elementos*/
-    /* ! para controlar la altura del article pero que el ancho crezca o se reduzca segim */
-    width: 100%;
-    /* height: 310px; */
+    gap: 10px;
     border: var(--bottom-line);
+    padding: 5px; /*para corregir desbordamiento, de lo contrario habria que jugar con el minmax del grid-temprate-column del ul*/
   }
 
-  .recomendaciones article > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%; /*para que el contenedor tenga un ancho uniforme para todos los elementos*/
+  .recomendaciones ul li article > div {
+    justify-content: space-around;
+    /*para que el contenedor tenga un ancho y alto uniforme para todos los elementos*/
+    width: 120px;
+    height: 300px;
+    /* ? Para cuidar la separacion del div con el borde derecho, ya que sino algunos elementos llegaran a dicho borde y otros no */
+    /* margin-top: 10px; */
+    /* margin-right: 10px; */
+    margin: 10px 10px 0px 0;
   }
 
   .recomendaciones ul li article div > h2 {
     font-size: var(--typo-xs);
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    width: clamp(115px, calc(115 + 1vw), 125px);
+    height: clamp(60px, calc(59px + 1vw), 80px);
+    align-content: center;
   }
 
   /*? un botón dentro de una celda de un grid con 1fr en la configuración de las filas o columnas, el botón ocupa todo el alto porque, de forma predeterminada, los elementos dentro de una celda tienden a expandirse para llenar el espacio disponible. Asi que para controlar esto, se puede establecer el alto del botón (en caso de la celda fuese 1fr)*/
@@ -914,7 +928,7 @@ header .nav-bar-secondary ul li a {
   footer {
     background-color: rgb(210, 204, 204);
     padding: 5px;
-    margin-top: 5vh;
+    margin-top: 2vh;
     border: 1px solid black;
     border-radius: 10px;
     width: 99vw;
@@ -982,6 +996,10 @@ header .nav-bar-secondary ul li a {
 
   /* ? navbar's del header */
 
+  .header-container {
+    width: 99vw;
+  }
+
   header .nav-bar-first {
     margin-bottom: 10px;
   }
@@ -994,6 +1012,8 @@ header .nav-bar-secondary ul li a {
   header .nav-bar-secondary {
     transition: none;
     transform: none;
+    width: 100%;
+    /* margin: 0px 2.5%; */
   }
 
   header .nav-bar-secondary ul {
@@ -1003,10 +1023,16 @@ header .nav-bar-secondary ul li a {
     align-items: center;
     padding: 0px;
     gap: 5px;
+    justify-content: center;
   }
 
   .nav-bar-secondary ul li {
-    margin-left: 0; /*quitamos la alineacion de la vista par movil*/
+    margin-left: 0;
+    /*quitamos la alineacion de la vista par movil*/
+  }
+
+  .nav-bar-secondary ul li a {
+    text-align: center;
   }
 
   /* ! ------- hace algo ? */
@@ -1019,4 +1045,10 @@ header .nav-bar-secondary ul li a {
     flex: 1;
   }
   /* ! -------  */
+
+  main {
+    width: 90vw;
+    margin: 0 5vw;
+    margin-top: calc(var(--header-desktop-height) + 83px);
+  }
 }
