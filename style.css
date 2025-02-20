@@ -655,6 +655,7 @@ header .nav-bar-secondary ul li a {
   /* ! ------- para corregir el problema de elementos desalineados/desordenados dentro del grid del ul ---- POR QUE??*/
   .banner-news * {
     height: 100%;
+    width: 100%;
   }
 
   /* todo:  esto es lo mismo que .banner-news * :
@@ -672,8 +673,6 @@ header .nav-bar-secondary ul li a {
     padding: 0px;
     padding-top: 10px; /* para separar de la seccion anterior */
     gap: 10px;
-
-    justify-content: center;
   }
 
   /* ! -------- usamos grid-template-rows: 2fr 0fr 0fr; para corregir el sobredimensionamiento de altura en la grilla del article. ---- POR QUE?? */
@@ -684,6 +683,7 @@ header .nav-bar-secondary ul li a {
     padding: 0px;
     gap: 10px;
     border: none; /*para quitar el border-botton establecido en .banner-news ul li > *  */
+    justify-content: center;
   }
 
   .banner-news ul li article > h2 {
@@ -693,6 +693,7 @@ header .nav-bar-secondary ul li a {
     /* ! para que todos tengan la misma altura y no se sobredimensionen */
     height: clamp(60px, calc(20px + 1vw), 110px);
     margin: 0 10px;
+    width: 400px; /* para que no se sobredimensionen/desborden */
   }
 
   .banner-news ul li article button,
@@ -748,7 +749,8 @@ header .nav-bar-secondary ul li a {
     font-size: var(--typo-xs);
     border-top: 1px solid gray;
     border-bottom: 1px solid gray;
-    width: clamp(115px, calc(115 + 1vw), 125px);
+    /* width: clamp(115px, calc(115 + 1vw), 125px); */
+    width: 100%; /*para que el ancho del titulo sea uniforme siempre y la lineas horizontales ocupen todo el ancho*/
     height: clamp(60px, calc(59px + 1vw), 80px);
     align-content: center;
   }
@@ -1048,5 +1050,26 @@ header .nav-bar-secondary ul li a {
     width: 90vw;
     margin: 0 5vw;
     margin-top: calc(var(--header-desktop-height) + 83px);
+  }
+
+  .banner-news ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 475px));
+    align-items: center;
+    padding: 0px;
+    padding-top: 10px; /* para separar de la seccion anterior */
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .banner-news ul li article > h2 {
+    width: 465px; /* para que no se sobredimensionen/desborden */
+    margin: 0 auto;
+  }
+
+  .banner-news ul li article img,
+  banner-news ul li article a img {
+    width: 99%; /*para evitar desbordamiento teniendo en cuenta el borde*/
+    margin: 0 auto; /*para  centrar dentro del contenedor*/
   }
 }
